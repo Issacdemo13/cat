@@ -10,15 +10,18 @@
 		  autoplay: false,
 		  path: 'https://assets7.lottiefiles.com/private_files/lf30_Xtzj7X.json' // the path to the animation json
 		});
+		 $(window).scrollTop($("#super").height()/3);
 		$(window).scroll(()=>{
 			a.goToAndStop(
-				Math.ceil($(window).scrollTop()/($("#super").height()/2)*a.totalFrames)%a.totalFrames
+				Math.ceil($(window).scrollTop()/($("#super").height()/3)*a.totalFrames)%a.totalFrames
 				,true);
 			a.play();
 			setTimeout(()=>{
 				a.pause();
-				if($(window).scrollTop()>$("#super").height()/2){
-					$(window).scrollTop($(window).scrollTop()%($("#super").height()/2))
+				if($(window).scrollTop()>$("#super").height()/3*2){
+					$(window).scrollTop($(window).scrollTop()%($("#super").height()/3)+$("#super").height()/3)
+				}else if($(window).scrollTop()<$("#super").height()/3){
+					$(window).scrollTop($(window).scrollTop()%($("#super").height()/3)+$("#super").height()/3)
 				}
 			},100)
 		})
